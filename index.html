@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery Plugin Principle</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<!-- Intro -->
+		<div class="jumbotron">
+			<h1>jQuery Plugin Principle</h1>
+			<p class="lead">A simple jQuery plugin to edit and override the content title before saving to the database.</p>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h2>Heading Column 1</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+				<button class="buttonEdit">Click to edit title</button>
+			</div>
+			<div class="col-md-4">
+				<h2>Heading Column 2</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+				<button class="buttonEdit">Click to edit title</button>
+			</div>
+			<div class="col-md-4">
+				<h2>Heading Column 3</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+				<button class="buttonEdit">Click to edit title</button>
+			</div>
+		</div>
+
+	</div> <!-- /container -->
+
+	<!-- loading scripts at the bottom of the page makes the DOM load faster -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.plugin.js"></script>
+
+	<script>
+		// telling jQuery to perform this function
+		// when the DOM is ready
+		jQuery(document).ready( function($) {
+            
+            //This is an event required to do something
+            //meaning the code will only run when the "click" event
+            //takes place
+			$('.buttonEdit').click( function () {
+				var current  =  $(this).parent().find('h2'),
+					title = prompt("Please enter title: ", "");
+
+				if (title != null) {
+
+			        current.principle({
+						text		: title, // now attached the input text to the title
+						color		: '#00A8FF', // with a nice color :)
+						complete	: function() { alert('Done!'); } // show completion
+					});
+
+			    } else {
+
+			    	// or else tell the user he or she needs to insert a text
+			    	alert("Sorry you need to insert a text for the title");
+			    }
+
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+</body>
+</html>
